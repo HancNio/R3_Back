@@ -1,10 +1,5 @@
 package retodos_web.repositorio;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +11,10 @@ import retodos_web.modelo.User;
  *
  * @author hanc9
  */
+
 @Repository
 public class UserRepositorio {
+    
      @Autowired
     private UserInterface userCrudRepository;
      
@@ -47,6 +44,10 @@ public class UserRepositorio {
     }
     public Optional<User> authenticateUser(String email, String password) {
         return userCrudRepository.findByEmailAndPassword(email, password);
+    }
+    
+    public Optional<User> lastUserId(){
+        return userCrudRepository.findTopByOrderByIdDesc();
     }
 
 }
